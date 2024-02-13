@@ -1,13 +1,10 @@
 #include <iostream>
 #include <string>
 
-// Classe abstraite pour un service de maintenance
 class ServiceMaintenance {
 public:
     virtual void effectuerMaintenance() = 0;
 };
-
-// Structure pour représenter les coordonnées d'un lieu
 struct Coordonnees {
     double latitude;
     double longitude;
@@ -15,7 +12,6 @@ struct Coordonnees {
     Coordonnees(double lat, double lon) : latitude(lat), longitude(lon) {}
 };
 
-// Classe de base Vehicule
 class Vehicule {
 public:
     virtual void demarrer() = 0;
@@ -24,12 +20,11 @@ public:
     }
 };
 
-// Classe Voiture héritant de Vehicule
 class Voiture : public Vehicule, public ServiceMaintenance {
 private:
     std::string marque;
     std::string modele;
-    Coordonnees position;  // Nouvelle fonctionnalité : position du véhicule
+    Coordonnees position;  
 
 public:
     Voiture(std::string m, std::string mod, double lat, double lon) : marque(m), modele(mod), position(lat, lon) {}
@@ -47,7 +42,6 @@ public:
     }
 };
 
-// Nouvelle classe Moto héritant de Vehicule
 class Moto : public Vehicule {
 private:
     std::string marque;
@@ -61,7 +55,6 @@ public:
     }
 };
 
-// Fonction utilitaire pour effectuer une opération générique sur un Vehicule
 void effectuerOperation(Vehicule& vehicule) {
     vehicule.demarrer();
     vehicule.arreter();
